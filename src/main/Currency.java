@@ -1,16 +1,22 @@
 package main;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Currency {
+	
+	static List<String> currencyList = new ArrayList<>(); //Arrays.asList("USD","EUR","GBP","SEK");
+	static List<Double> currencyRate = new ArrayList<>(); //Arrays.asList(1.0,0.9232,0.8036,10.6385);
 
-	static List<String> currencyList = Arrays.asList("USD","EUR","GBP","SEK");
-	static List<Double> currencyRate = Arrays.asList(1.0,0.9232,0.8036,10.6385);
+	public static double exchangeRate(String sourceCurrency, String targetCurrency) throws IOException {
+		for (Map.Entry<String, Double> currency : ReadURL.sendHTTPGetRequest().entrySet()) { 
+	    	currencyList.add(currency.getKey());
+	    	currencyRate.add(currency.getValue()); 
+	    } 
 
-	public static double exchangeRate(String sourceCurrency, String targetCurrency) {
-		// Exchange rate to USD for the supported currencies 
 		int sourceIndex=currencyList.indexOf(sourceCurrency);
 		int targetIndex=currencyList.indexOf(targetCurrency);
 		double exchangeRate = 0.0;
@@ -20,8 +26,8 @@ public class Currency {
 		}else {
 			System.out.println("Error: unsupported currency");
 		}
-		 
-		 return exchangeRate;
+
+		return exchangeRate;
 	}
 	
 	public static List<Double> allCurrencyRates(String sourceCurrency) {
@@ -34,3 +40,4 @@ public class Currency {
 	}
 }
 
+ 

@@ -1,6 +1,9 @@
 package main;
 
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 public class CurrencyConverter {
 
@@ -33,14 +36,16 @@ public class CurrencyConverter {
 		return targetCurrency;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 
+		JOptionPane.showMessageDialog(null, "Simple Information Message");
+		
 		String sourceCurrency = sourceCurrency(); 
 		String targetCurrency = targetCurrency();
 		double sourceAmount= sourceAmount();
 		Convert.convertToOne(sourceCurrency,sourceAmount,targetCurrency);
 		Convert.convertToAll(sourceCurrency,sourceAmount);
+		
 	}
-
 
 }
