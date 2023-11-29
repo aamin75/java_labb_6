@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.json.JSONObject;
 
@@ -20,7 +21,8 @@ public class ReadURL {
 		httpURLConnection.setRequestMethod("GET");
 		int responseCode = httpURLConnection.getResponseCode();
 		
-		Map<String, Double> urlCurrencies = new HashMap<String, Double>(); 
+		Map<String, Double> unsortedURLCurrency = new HashMap<String, Double>();
+		Map<String, Double> sortedURLCurrency = new HashMap<String, Double>();
 
 		if (responseCode == HttpURLConnection.HTTP_OK) {
 			BufferedReader inStream = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
@@ -37,13 +39,13 @@ public class ReadURL {
 			while(keys.hasNext()){
 				String key = keys.next();
 				Double value = subObj.getDouble(key);
-			    urlCurrencies.put(key, value); 
+			    unsortedURLCurrency.put(key, value); 
 			}
-	    
+			sortedURLCurrency = new TreeMap<>(unsortedURLCurrency);
 		} else {
 			System.out.println("GET Request failed");
 		}
-		return urlCurrencies;
+		return sortedURLCurrency;
 	}
 
 }

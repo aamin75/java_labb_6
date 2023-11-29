@@ -34,14 +34,9 @@ public class Convert {
 //		Collections.sort(targetAmounts,Collections.reverseOrder());
 		
 		for(int i=0; i < targetAmounts.size(); i++) {
-			funcSinglePrint((d1,d2,s1,s2)-> System.out.println(d1+" "+s1+" is equal to "+df.format(d2)+" "+s2),sourceAmount, targetAmounts.get(i), sourceCurrency, Currency.currencyList.get(i));
+			funcSinglePrint((d1,d2,s1,s2)-> System.out.println(d1+" "+s1+" is equal to "+df.format(d2)+" "+s2),sourceAmount, targetAmounts.get(i), sourceCurrency, CurrencyConverter.currencyList.get(i));
 		}
 		
-//		System.out.println("TEST TEST TEST");	
-//		System.out.println(Currency.allCurrencyRates(sourceCurrency));
-//		System.out.println(targetAmounts);
-//		System.out.println(sortedTargetAmounts);
-				
 	}
 	
 }
