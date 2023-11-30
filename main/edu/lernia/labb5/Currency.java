@@ -1,4 +1,4 @@
-package main;
+package edu.lernia.labb5;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,12 +23,10 @@ public class Currency {
 	}
 	
 	public static List<Double> allCurrencyRates(String sourceCurrency) {
-//		if(currencyList.contains(sourceCurrency)) {
-			double exchangeRate=CurrencyConverter.currencyRate.get(CurrencyConverter.currencyList.indexOf(sourceCurrency));
-			List<Double> allCurrencyRates = CurrencyConverter.currencyRate.stream().map(rate -> rate / exchangeRate).collect(Collectors.toList());
+		double exchangeRate=CurrencyConverter.currencyRate.get(CurrencyConverter.currencyList.indexOf(sourceCurrency));
+		List<Double> allCurrencyRates = CurrencyConverter.currencyRate.stream().map(rate -> rate / exchangeRate).collect(Collectors.toList());
 
-			return allCurrencyRates;
-//		}
+		return allCurrencyRates;
 	}
 }
 

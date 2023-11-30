@@ -1,4 +1,4 @@
-package main;
+package edu.lernia.labb5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
